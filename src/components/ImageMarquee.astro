@@ -15,7 +15,7 @@ const { images } = Astro.props
          ))
       }
       {
-         images.reverse().map((el) => (
+         images.slice(0, 10).map((el) => (
             <div class="marquee-item">
                <img src={el.src} alt={el.alt} />
             </div>
