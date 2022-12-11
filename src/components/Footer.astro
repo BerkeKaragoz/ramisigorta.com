@@ -1,9 +1,16 @@
 ---
+import ImageMarquee from "./ImageMarquee.astro"
+
 const today = new Date()
+const images = new Array(3).fill({
+   src: "https://via.placeholder.com/600",
+   alt: "placeholder",
+})
 ---
 
 <footer>
    &copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+   <ImageMarquee images={images} />
 </footer>
 <style>
    footer {
