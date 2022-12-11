@@ -1,0 +1,26 @@
+---
+const { arrowSide } = Astro.props
+
+let pathDirection = ""
+
+if (arrowSide === "right") {
+   pathDirection = "M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+} else if (arrowSide === "top") {
+   pathDirection = "M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"
+} else if (arrowSide === "left") {
+   pathDirection = "M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+} else if (arrowSide === "down") {
+   pathDirection = "M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
+}
+---
+
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   fill="none"
+   viewBox="0 0 24 24"
+   stroke-width="1.5"
+   stroke="currentColor"
+   class="w-6 h-6"
+>
+   <path stroke-linecap="round" stroke-linejoin="round" d={pathDirection}></path>
+</svg>

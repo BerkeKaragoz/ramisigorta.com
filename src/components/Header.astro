@@ -3,27 +3,32 @@ import HeaderLink from "./HeaderLink.astro"
 import { SITE_TITLE } from "../config"
 ---
 
-<header>
-   <h2>
-      {SITE_TITLE}
-   </h2>
-   <nav>
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
-      <HeaderLink href="https://twitter.com/astrodotbuild" target="_blank"
-         >Twitter</HeaderLink
+<header
+   class="sticky top-0 z-50 flex items-center justify-between bg-white py-4 pl-28 pr-20 shadow-2xl"
+>
+   <img
+      src="http://ramisigorta.com/Upload/ramisigortacom-logo.png"
+      alt="Rami Sigorta Logo"
+      class="h-12 w-auto"
+   />
+   <nav class="flex items-center gap-6">
+      <HeaderLink href="/">ANASAYFA</HeaderLink>
+      <HeaderLink href="/hakkımızda">HAKKIMIZDA</HeaderLink>
+      <HeaderLink href="/hizmetlerimiz">HİZMETLERİMİZ</HeaderLink>
+      <HeaderLink href="/teklif-al">TEKLİF AL</HeaderLink>
+      <HeaderLink href="/iletişim">İLETİŞİM</HeaderLink>
+      <svg
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="1.5"
+         stroke="currentColor"
+         class="h-6 w-6 cursor-pointer"
       >
-      <HeaderLink href="https://github.com/withastro/astro" target="_blank"
-         >GitHub</HeaderLink
-      >
+         <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"></path>
+      </svg>
    </nav>
 </header>
-<style>
-   header {
-      margin: 0em 0 2em;
-   }
-   h2 {
-      margin: 0.5em 0;
-   }
-</style>
