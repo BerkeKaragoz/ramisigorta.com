@@ -10,3 +10,9 @@
     --color-ternary: 144 166 191;
   }
 }
+
+@layer components {
+    .app-container {
+        @apply container px-4 mx-auto;
+    }
+}
