@@ -1,34 +1,46 @@
 ---
+import { clsx } from "clsx"
+
 import HeaderLink from "./HeaderLink.astro"
-import { SITE_TITLE } from "../config"
+import Logo from "../assets/images/logo.png"
+import Sidebar from "./Sidebar.astro"
+
+const { class: className, ...rest } = Astro.props
+
+let sidebarState = "closed"
 ---
 
 <header
-   class="sticky top-0 z-50 flex items-center justify-between bg-white py-4 pl-28 pr-20 shadow-2xl"
+   class={clsx(
+      "sticky top-0 z-50 flex items-center justify-between bg-white py-4 pl-28 pr-20 shadow-2xl",
+      className
+   )}
+   {...rest}
 >
-   <img
-      src="http://ramisigorta.com/Upload/ramisigortacom-logo.png"
-      alt="Rami Sigorta Logo"
-      class="h-12 w-auto"
-   />
+   <img src={Logo} alt="Rami Sigorta Logo" class="h-12 w-auto" />
    <nav class="flex items-center gap-6">
       <HeaderLink href="/">ANASAYFA</HeaderLink>
       <HeaderLink href="/hakkımızda">HAKKIMIZDA</HeaderLink>
       <HeaderLink href="/hizmetlerimiz">HİZMETLERİMİZ</HeaderLink>
       <HeaderLink href="/teklif-al">TEKLİF AL</HeaderLink>
       <HeaderLink href="/iletişim">İLETİŞİM</HeaderLink>
-      <svg
-         xmlns="http://www.w3.org/2000/svg"
-         fill="none"
-         viewBox="0 0 24 24"
-         stroke-width="1.5"
-         stroke="currentColor"
-         class="h-6 w-6 cursor-pointer"
-      >
-         <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"></path>
-      </svg>
+      <button id="app-sidebar-toggle" type="button" data-state={sidebarState}>
+         <svg
+            id="menu"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6 cursor-pointer"
+         >
+            <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+            ></path>
+         </svg>
+      </button>
    </nav>
+   <Sidebar data-state={sidebarState} />
 </header>
