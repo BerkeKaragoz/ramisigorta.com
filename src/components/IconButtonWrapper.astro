@@ -1,0 +1,17 @@
+---
+import clsx from "clsx"
+
+import IconWrapper from "./IconWrapper.astro"
+
+const { class: className, ...rest } = Astro.props
+---
+
+<span
+   class={clsx(
+      "inline-block cursor-pointer rounded-full bg-primary p-3 text-white w-12 h-12 hover:text-black ",
+      className
+   )}
+   {...rest}
+>
+   <IconWrapper><slot /></IconWrapper>
+</span>
