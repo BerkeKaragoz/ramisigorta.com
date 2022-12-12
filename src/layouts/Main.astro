@@ -3,6 +3,8 @@ import BaseHead from "@/components/BaseHead.astro"
 import Header from "@/components/Header.astro"
 import Footer from "@/components/Footer.astro"
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/config"
+import IconButtonWrapper from "@/components/IconButtonWrapper.astro"
+import Arrow from "@/components/Arrow.astro"
 
 export interface Props {
    title?: string
@@ -22,7 +24,35 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, ...rest } = Astro.pr
       <Header />
       <main {...rest}>
          <slot />
+         <IconButtonWrapper
+            id="scroll-top"
+            class="fixed right-20 bottom-20 z-20 shadow-2xl"
+         >
+            <Arrow arrowSide="top" />
+         </IconButtonWrapper>
       </main>
       <Footer class="mt-8" />
+      <script>
+         let scrollBtn = document.getElementById("scroll-top")
+
+         const btnVisibility = () => {
+            if (window.scrollY > 75) {
+               scrollBtn.style.visibility = "visible"
+            } else {
+               scrollBtn.style.visibility = "hidden"
+            }
+         }
+
+         document.addEventListener("scroll", () => {
+            btnVisibility()
+         })
+
+         scrollBtn.addEventListener("click", () => {
+            window.scrollTo({
+               top: 0,
+               behavior: "smooth",
+            })
+         })
+      </script>
    </body>
 </html>

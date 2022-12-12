@@ -1,16 +1,14 @@
 ---
-export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
-
-const { href, ...props } = Astro.props
+const { href, ...rest } = Astro.props
 const { pathname } = Astro.url
 ---
 
 <a
    href={href}
-   class={`text-black lg:text-xs xl:text-sm hover:text-primary ${
+   class={` text-black lg:text-xs xl:text-sm hover:text-primary  ${
       href === pathname ? " border-b-2 border-primary" : ""
    }`}
-   {...props}
+   {...rest}
 >
    <slot />
 </a>
