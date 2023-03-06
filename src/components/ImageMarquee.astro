@@ -1,0 +1,63 @@
+---
+interface Props {
+   images: { src: string; alt: string }[]
+}
+const { images } = Astro.props
+---
+
+<div class="marquee" style={`--marquee-item-count: ${images.length}`}>
+   <div class="marquee-content">
+      {
+         images.map((el) => (
+            <div class="marquee-item">
+               <img src={el.src} alt={el.alt} />
+            </div>
+         ))
+      }
+      {
+         images.slice(0, 10).map((el) => (
+            <div class="marquee-item">
+               <img src={el.src} alt={el.alt} />
+            </div>
+         ))
+      }
+   </div>
+</div>
+<style>
+   footer {
+      padding: 25px;
+      text-align: center;
+   }
+
+   .marquee {
+      --marquee-item-size: calc(150px + 2em);
+      overflow: hidden;
+   }
+
+   .marquee-content {
+      display: flex;
+   }
+
+   .marquee-item {
+      flex: 0 0 calc(var(--marquee-item-size) - 2em);
+      margin: 0 1em;
+      animation: scrolling linear infinite;
+      animation-duration: calc(var(--marquee-item-count) * 6s);
+   }
+
+   .marquee-item img {
+      display: block;
+      width: 100%;
+   }
+
+   @keyframes scrolling {
+      0% {
+         transform: translateX(0);
+      }
+      100% {
+         transform: translatex(
+            calc(var(--marquee-item-size) * var(--marquee-item-count) * -1)
+         );
+      }
+   }
+</style>

@@ -1,0 +1,9 @@
+---
+import clsx from "clsx"
+
+const { class: className, ...rest } = Astro.props
+---
+
+<span class={clsx("inline-block", className)} {...rest}>
+   <slot />
+</span>

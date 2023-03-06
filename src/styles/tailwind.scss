@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+   :root {
+      --color-primary: 37 150 190;
+      --color-secondary: 248 115 9;
+      --color-accent: 62 65 76;
+      --color-ternary: 144 166 191;
+   }
+}
+
+@layer components {
+   .app-container {
+      @apply container mx-auto px-4;
+   }
+}
+
+.sidebar-fadeIn {
+   visibility: visible;
+   opacity: 1;
+   transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.sidebar-fadeOut {
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.header-dropdown {
+   position: relative;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+   display: none;
+   position: absolute;
+   top: 80px;
+   right: 250px;
+   background-color: white;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+   z-index: 100;
+}
+
+/* Show the dropdown menu on hover */
+.header-dropdown:hover .dropdown-content {
+   display: block;
+}
+
+@media screen and (max-width: 1284px) {
+   .dropdown-content {
+      right: 225px;
+   }
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+   cursor: pointer;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+   background-color: #ddd;
+}

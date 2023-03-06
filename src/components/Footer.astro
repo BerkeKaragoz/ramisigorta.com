@@ -1,0 +1,20 @@
+---
+import ImageMarquee from "./ImageMarquee.astro"
+import firmLogos from "@/assets/data/firm-logos.json"
+
+const today = new Date()
+
+const { ...rest } = Astro.props
+---
+
+<footer {...rest}>
+   <ImageMarquee images={firmLogos} />
+   <div class="text-sm text-ternary">
+      &copy; {today.getFullYear()} Rami Sigorta.
+   </div>
+</footer>
+<style>
+   footer {
+      text-align: center;
+   }
+</style>

@@ -1,0 +1,14 @@
+---
+const { href, ...rest } = Astro.props
+const { pathname } = Astro.url
+---
+
+<a
+   href={href}
+   class={` text-black lg:text-xs xl:text-sm hover:text-primary  ${
+      href === pathname ? " border-b-2 border-primary" : ""
+   }`}
+   {...rest}
+>
+   <slot />
+</a>

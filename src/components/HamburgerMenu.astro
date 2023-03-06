@@ -1,0 +1,62 @@
+---
+const expanded = "bg-[#232023]  text-white absolute top-20 w-full left-0 z-50"
+const hidden = "hidden"
+---
+
+<nav
+   id="app-hamburgerMenu-toggle"
+   data-class-expanded={expanded}
+   data-class-hidden={hidden}
+   class={hidden}
+>
+   <ul
+      class="flex cursor-pointer list-none flex-col items-start space-y-2 border border-black pt-2"
+   >
+      <li
+         class="w-full border-b border-black pb-2 hover:bg-primary hover:text-black"
+      >
+         <a class="px-4">ANASAYFA</a>
+      </li>
+      <li
+         class="w-full border-b border-black pb-2 hover:bg-primary hover:text-black"
+      >
+         <a class="px-4">HAKKIMIZDA</a>
+      </li>
+      <li
+         class="w-full border-b border-black pb-2 hover:bg-primary hover:text-black"
+      >
+         <a class="px-4">HİZMETLERİMİZ</a>
+      </li>
+      <li
+         class="w-full border-b border-black pb-2 hover:bg-primary hover:text-black"
+      >
+         <a class="px-4">TEKLİF AL</a>
+      </li>
+      <li
+         class="w-full border-b border-black pb-2 hover:bg-primary hover:text-black"
+      >
+         <a class="px-4">İLETİŞİM</a>
+      </li>
+   </ul>
+</nav>
+
+<script>
+   function handleClick() {
+      const hamburgerEl = document.getElementById("app-hamburgerMenu-toggle")
+      const isExpanded = hamburgerEl.getAttribute("data-state") === "expanded"
+      const expandedClass = hamburgerEl.getAttribute("data-class-expanded")
+      const hiddenClass = hamburgerEl.getAttribute("data-class-hidden")
+
+      if (isExpanded) {
+         hamburgerEl.setAttribute("data-state", "hidden")
+         hamburgerEl.setAttribute("class", hiddenClass)
+      } else {
+         hamburgerEl.setAttribute("data-state", "expanded")
+         hamburgerEl.setAttribute("class", expandedClass)
+      }
+   }
+
+   document.querySelectorAll("#app-hamburgerMenu-toggle").forEach((el) => {
+      el.addEventListener("click", handleClick)
+   })
+</script>
