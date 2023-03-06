@@ -3,6 +3,12 @@ import Arrow from "./Arrow.astro"
 import IconButtonWrapper from "./IconButtonWrapper.astro"
 
 const { imageSrc, imageAlt, title, desc } = Astro.props
+//TODO cursor-pointer on img
+/*
+      <IconButtonWrapper class="mb-6">
+         <Arrow arrowSide="right" />
+      </IconButtonWrapper>
+      */
 ---
 
 <div class="flex flex-col gap-4 shadow-lg">
@@ -10,16 +16,13 @@ const { imageSrc, imageAlt, title, desc } = Astro.props
       <img
          src={imageSrc}
          alt={imageAlt}
-         class="h-56 w-full transform cursor-pointer object-cover transition duration-300 ease-in-out hover:scale-110"
+         class="h-56 w-full transform object-cover transition duration-300 ease-in-out hover:scale-110"
       />
    </div>
    <div class="flex flex-col gap-4 px-4">
       <h6 class="font-semibold">{title}</h6>
-      <p>
+      <p class="mb-4 font-light opacity-80">
          {desc}
       </p>
-      <IconButtonWrapper class="mb-6">
-         <Arrow arrowSide="right" />
-      </IconButtonWrapper>
    </div>
 </div>

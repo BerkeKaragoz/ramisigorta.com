@@ -8,7 +8,6 @@ import HamburgerMenu from "./HamburgerMenu.astro"
 import HeaderDropdown from "./HeaderDropdown.astro"
 
 const { class: className, ...rest } = Astro.props
-
 ---
 
 <header
@@ -19,23 +18,49 @@ const { class: className, ...rest } = Astro.props
    {...rest}
 >
    <img src={Logo} alt="Rami Sigorta Logo" class="h-12 w-auto" />
-   <nav class="hidden items-center gap-6 lg:flex">
-      <HeaderLink href="/">ANASAYFA</HeaderLink>
-      <HeaderLink href="/hakkımızda">HAKKIMIZDA</HeaderLink>
-      <p
-         class=".header-dropdown cursor-pointer text-black hover:text-primary lg:text-xs xl:text-sm"
-      >
-         HİZMETLERİMİZ
-      </p>
-      {/*Services Dropdown */}
-      <HeaderDropdown />
-      <HeaderLink href="/teklif-al">TEKLİF AL</HeaderLink>
-      <HeaderLink href="/iletişim">İLETİŞİM</HeaderLink>
-      {/*Sidebar Button */}
+   <span class="hidden">
+      <nav class="hidden items-center gap-6 lg:flex">
+         <HeaderLink href="/">ANASAYFA</HeaderLink>
+         <HeaderLink href="/hakkımızda">HAKKIMIZDA</HeaderLink>
+         <p
+            class=".header-dropdown cursor-pointer text-black hover:text-primary lg:text-xs xl:text-sm"
+         >
+            HİZMETLERİMİZ
+         </p>
+         {/*Services Dropdown */}
+         <HeaderDropdown />
+         <HeaderLink href="/teklif-al">TEKLİF AL</HeaderLink>
+         <HeaderLink href="/iletişim">İLETİŞİM</HeaderLink>
+         {/*Sidebar Button */}
+         <button
+            id="app-sidebar-toggle"
+            type="button"
+            class="hidden lg:block"
+            data-state="hidden"
+         >
+            <svg
+               id="menu"
+               xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="1.5"
+               stroke="currentColor"
+               class="h-6 w-6 cursor-pointer"
+            >
+               <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+               ></path>
+            </svg>
+         </button>
+      </nav>
+
+      {/*Hamburger Menu Button */}
       <button
-         id="app-sidebar-toggle"
+         id="app-hamburgerMenu-toggle"
          type="button"
-         class="hidden lg:block"
+         class="block lg:hidden"
          data-state="hidden"
       >
          <svg
@@ -54,29 +79,7 @@ const { class: className, ...rest } = Astro.props
             ></path>
          </svg>
       </button>
-   </nav>
-   {/*Hamburger Menu Button */}
-   <button
-      id="app-hamburgerMenu-toggle"
-      type="button"
-      class="block lg:hidden"
-      data-state="hidden"
-   >
-      <svg
-         id="menu"
-         xmlns="http://www.w3.org/2000/svg"
-         fill="none"
-         viewBox="0 0 24 24"
-         stroke-width="1.5"
-         stroke="currentColor"
-         class="h-6 w-6 cursor-pointer"
-      >
-         <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"></path>
-      </svg>
-   </button>
+   </span>
    <Sidebar data-state="hidden" />
    <HamburgerMenu data-state="hidden" />
 </header>
